@@ -1,5 +1,6 @@
 namespace PrimeService.Tests;
 
+[TestFixture]
 public class Tests
 {
     [SetUp]
@@ -11,5 +12,10 @@ public class Tests
     public void Test1()
     {
         Assert.Pass();
+    }
+    [Test]
+    public void Test2()
+    {
+        Assert.Fail("Test Fail");
     }
 }
