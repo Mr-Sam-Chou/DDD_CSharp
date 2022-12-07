@@ -1,5 +1,5 @@
 using System;
-namespace PrimeService.Tests;
+namespace Prime.Service.Tests;
 
 [TestFixture]
 public class Tests
