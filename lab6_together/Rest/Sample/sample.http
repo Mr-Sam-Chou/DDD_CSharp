@@ -3,3 +3,29 @@ GET https://localhost:7043/WeatherForecast
 ###
 
 GET https://localhost:7043/api/add-event
+
+###
+
+@host = localhost:7043
+POST https://{{host}}/api/add-event
+Content-Type: application/json
+
+{
+    "name":"作菜",
+    "coordinator":"Mark Ho",
+    "place":"Taipei 101 6F",
+    "lat":20.42,
+    "lng":120.32,
+    "fee":500
+}
+
+###
+
+POST https://{{host}}/api/query-event
+Content-Type: application/json
+
+{
+    "lat":20.42,
+    "lng":130.254,
+    "length":0.5
+}
