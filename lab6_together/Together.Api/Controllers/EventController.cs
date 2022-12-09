@@ -26,16 +26,23 @@ public class EventController : ControllerBase
     [HttpPost("query-event")]
     public IActionResult QueryEvent(QueryEventRequest request)
     {
-        List<QueryEventResponse> events = new List<QueryEventResponse>();
-        while (true)
+        List<QueryEventResponse> events = new();
+        // while (true)
+        // {
+        //     if (events!.Count > 10)
+        //     {
+        //         break;
+        //     }
+        //     Random myObject = new Random();
+        //     int ranNum = myObject.Next(100, 1000);
+        //     events.Add(new QueryEventResponse("nane", "mark", "tpe", 20.4f, 121.3f, ranNum));
+        // }
+        var result = eventService.query(request.lat, request.lng, request.length);
+        foreach (var r in result)
         {
-            if (events!.Count > 10)
-            {
-                break;
-            }
-            Random myObject = new Random();
-            int ranNum = myObject.Next(100, 1000);
-            events.Add(new QueryEventResponse("nane", "mark", "tpe", 20.4f, 121.3f, ranNum));
+            QueryEventResponse response = new QueryEventResponse(r.name, r.coordinator, r.place,
+            r.lat, r.lng, r.fee);
+            events.Add(response);
         }
         return Ok(events);
     }
